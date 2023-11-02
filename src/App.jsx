@@ -54,6 +54,7 @@ function App() {
           <input
             type="text"
             name="icon_name"
+            placeholder="Type an icon name"
             onChange={handleIconSearchOnChange}
           />
         </div>

@@ -15,11 +15,11 @@
 
 .icon-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .icon-item {
-  /* flex-grow: 1; */
   text-align: center;
   padding: 2rem;
   width: 10rem;
@@ -89,8 +89,9 @@
   outline: none;
   color: white;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.10rem;
+  font-size: 1rem;
   font-weight: 100;
+  line-height: 1.5rem;
   width: calc(100% - 1rem);
 }
 
