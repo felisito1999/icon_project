@@ -38,7 +38,7 @@ function App() {
     }
 
     console.log(optIcons)
-    const filteredIcons = optIcons.filter((item) => item.name.includes(e.target.value));
+    const filteredIcons = optIcons.filter((item) => item.name.normalize("NFC").toLocaleLowerCase().includes(e.target.value.normalize("NFC").toLocaleLowerCase()));
     console.log(e.target.value);
 
 
