@@ -1,42 +1,128 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
+  text-align: center;
+  max-width: 85%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+.icon-container {
+  display: flex;
+  justify-items:flex-start;
+  flex-wrap: wrap;
+}
+
+.icon-item {
+  /* flex-grow: 1; */
+  text-align: center;
   padding: 2rem;
+  width: 10rem;
+  margin: 1rem;
+  border-radius: 10px;
+  background-color: #37474F;
+  border: .25rem solid #37474F;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  transition: all 500ms;
+}
+
+.icon-item:hover {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  background-color: #455A64;
+  border-color: #455A64;
+  font-size: 1.5rem;
+}
+
+.icon-item:hover .icon > svg{
+  height: 50px;
+  width: 50px;
+}
+
+.icon-item.selected {
+  border: .25rem solid #607D8B;
+}
+
+.icon-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icon {
+  min-height: 40px;
+  min-width: 40px;
+  padding: .25rem;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  border: 3px transparent solid;
+  border-radius: 10px;
+  transition: all 500ms;
+}
+
+.icon:hover {
+  background-color: #607D8B;
+  border: 3px #78909C solid;
+}
+
+form {
+  width:100%;
+}
+
+.form-group > * {
+  margin: 1rem 0px;
+  display: block;
+  text-align: left;
+}
+
+.form-group > input[type="text"] {
+  padding: 0.5rem;
+  background-color: #ECEFF1;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1.25rem;
+  width: 100%;
+}
+
+.icon > svg{
+  height: 40px;
+  width: 40px;
+  color: white;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  transition: all 500ms;
+}
+
+
+.icon-info {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 659px) {
+  #root {
+    max-width: 90%;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .icon-item {
+    width: 30%;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 578px) {
+  .icon-item {
+    width: 25%;
   }
 }
 
-.card {
-  padding: 2em;
+@media (max-width: 462px) {
+  .icon-item {
+    width: 100%;
+  }
 }
 
-.read-the-docs {
-  color: #888;
-}
+/* @media (max-wid) */
