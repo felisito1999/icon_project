@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import optIcons from "./icons";
 import "./App.css";
 
@@ -32,53 +32,61 @@ function App() {
   };
 
   const handleIconSearchOnChange = (e) => {
-    if (e.target.value === "" ||  e.target.value == null) {
+    if (e.target.value === "" || e.target.value == null) {
       setIcons(optIcons);
       return;
     }
 
-    console.log(optIcons)
-    const filteredIcons = optIcons.filter((item) => item.name.normalize("NFC").toLocaleLowerCase().includes(e.target.value.normalize("NFC").toLocaleLowerCase()));
-    console.log(e.target.value);
-
-
-
+    const filteredIcons = optIcons.filter((item) =>
+      item.name
+        .normalize("NFC")
+        .toLocaleLowerCase()
+        .includes(e.target.value.normalize("NFC").toLocaleLowerCase())
+    );
     setIcons(filteredIcons);
-  }
+  };
 
   return (
     <>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div className="form-group">
           <label htmlFor="icon_name">Search</label>
-          <input type="text" name="icon_name" onChange={handleIconSearchOnChange} />
+          <input
+            type="text"
+            name="icon_name"
+            onChange={handleIconSearchOnChange}
+          />
         </div>
       </form>
       <div className="icon-container">
-        {icons.map((item, index) => (
-          <div
-            className={
-              selectedIcon && selectedIcon.name == item.name
-                ? "icon-item selected"
-                : "icon-item"
-            }
-            key={index}
-            onClick={(e) => setIconInfo(item)}
-          >
-            <p>{item.name}</p>
-            <div className="icon-wrapper">
-              {item.icons.map((icon, iconIndex) => (
-                <div
-                  className="icon"
-                  key={iconIndex}
-                  onClick={(e) => goToSource(icon.type.name)}
-                >
-                  {icon}
-                </div>
-              ))}
+        {icons && icons.length == 0 ? (
+          <h2 className="search-message">No item was found</h2>
+        ) : (
+          icons.map((item, index) => (
+            <div
+              className={
+                selectedIcon && selectedIcon.name == item.name
+                  ? "icon-item selected"
+                  : "icon-item"
+              }
+              key={index}
+              onClick={(e) => setIconInfo(item)}
+            >
+              <p>{item.name}</p>
+              <div className="icon-wrapper">
+                {item.icons.map((icon, iconIndex) => (
+                  <div
+                    className="icon"
+                    key={iconIndex}
+                    onClick={(e) => goToSource(icon.type.name)}
+                  >
+                    {icon}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </>
   );
